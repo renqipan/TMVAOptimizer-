@@ -1,0 +1,8 @@
+A hyperparameter optimizer for the TMVA classifiers (BDT, SVM?, KERAS-DNN).
+
+The software is tested with CMSSW9 and ROOT6. After initializing these frameworks just type make.
+
+The current version of the software is tailored for the ttH-gg analysis but can be generalized with few minor modifications.
+./TMVAOptimizer <Algorithm> <Hyperparameter arguments>
+
+The python script enabling the hyperparameter scan using HTCONDOR is available upon request. 
