@@ -1,6 +1,4 @@
-#MakeFile for the ultimate plotting tool
-#
-# Author: Francesco Costanza, Ozgur Sahin, 30.3.2014
+#MakeFile for TMVAOptimizer
 
 #----------------------- here you can input your files and libraries ----------
 #
