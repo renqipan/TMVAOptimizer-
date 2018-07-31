@@ -1,4 +1,4 @@
-A hyperparameter optimizer for the TMVA classifiers (BDT, SVM?, KERAS-DNN).
+A hyperparameter optimizer for the TMVA classifiers (BDT, SVM?, KERAS-DNN). It is a wrapper on the TMVA framework. 
 
 The software is tested with CMSSW9 and ROOT6. After initializing these frameworks just type make.
 
