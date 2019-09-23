@@ -44,7 +44,7 @@ void TMVAAnalyzer::trainSample ( TTree * sample, int sampNo){
 /* the method which arranges the filenames according the TTHAnalyzer framework, a minor modification is required to make it generic*/
 void TMVAAnalyzer::trainInterface (TString fName, TString tName, int sampNo){
     if (gSystem->AccessPathName( fName)) 
-        std::cout << " The file not found " << fName+"_"+tName+"_MVA.root" << std::endl;
+        std::cout << " The file not found " << fName<< std::endl;
     TFile *input = (TFile*)TFile::Open( fName);
     TTree *tree     = (TTree*)input->Get(tName);
 //    std::cout << fName << std::endl;

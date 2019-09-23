@@ -58,9 +58,9 @@ void TMVAAnalyzer::evalSample (TTree * sample, int sampNo, bool addEvalBranch,TS
 }
 
 void TMVAAnalyzer::evalInterface (TString fName, TString tName, int sampNo){ 
-    if (gSystem->AccessPathName( fName+"_"+tName+"_MVA.root" ))  // file does not exist in local directory
-        std::cout << " The file not found " << fName+"_"+tName+"_MVA.root" << std::endl;
-    TFile *input = TFile::Open( fName+"_"+tName+"_MVA.root");
+    if (gSystem->AccessPathName( fName))  // file does not exist in local directory
+        std::cout << " The file not found " << fName<< std::endl;
+    TFile *input = TFile::Open( fName);
     TTree *tree     = (TTree*)input->Get(tName);
     evalSample(tree, sampNo, _addEvalBranch, _evalBranchName);
     if(_addEvalBranch){
