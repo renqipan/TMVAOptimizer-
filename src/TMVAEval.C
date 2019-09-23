@@ -9,7 +9,7 @@ void TMVAAnalyzer::evalSample (TTree * sample, int sampNo, bool addEvalBranch,TS
     const Float_t maxWeight = 1.0; 
     Float_t nJets, trained = 0.;
     sample->SetBranchAddress("weight", &weight );
-    sample->SetBranchAddress("diPhoMass", &diPhoMass );
+    sample->SetBranchAddress("mass", &diPhoMass );
     int varInd = 0;
     for(auto varName :_varNames){
         sample->SetBranchAddress(varName,&_evalVars[varInd]);
