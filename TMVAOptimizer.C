@@ -22,17 +22,13 @@ void TMVAAnalyzer::TMVAClassification(){
     TCut mycutb = "";
     std::cout << "Performing training..." << std::endl;
     /* TMVAOptimizer.h header includes the sampleNo typedef list */
-    trainInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_VBFHToGG_M125_13TeV_amcatnlo_pyth:wqia8", "vbf_125_13TeV_TTHLeptonicTag",kVBF);
-    trainInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_GluGluHToGG_M125_13TeV_amcatnloFXFX_pythia8", "ggh_125_13TeV_TTHLeptonicTag",kGGHgg);
-    trainInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_DiPhotonJetsBox_M40_80-Sherpa", "dipho_13TeV_TTHLeptonicTag",kDiPho);
-    trainInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa", "dipho_13TeV_TTHLeptonicTag",kDiPho);
-    trainInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8", "gjet_13TeV_TTHLeptonicTag",kGJet);
-    trainInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8", "gjet_13TeV_TTHLeptonicTag",kGJet);
-    trainInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8", "gjet_13TeV_TTHLeptonicTag",kGJet);
-    trainInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_TTHToGG_M125_13TeV_powheg_pythia8", "tth_125_poweg_13TeV_TTHLeptonicTag",kTTH);
-    trainInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_WZHToGG_M125_13TeV_amcatnloFXFX_madspin_pythia8", "wzh_125_13TeV_TTHLeptonicTag",kWZH);
-    trainInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_TTGJets_TuneCP5_13TeV-amcatnloFXFX-madspin-pythia8", "ttgjet_13TeV_TTHLeptonicTag",kTTgJet);
-    trainInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_TTJets_TuneCP5_13TeV-amcatnloFXFX-pythia8", "ttjet_13TeV_TTHLeptonicTag",kTTJet);
+    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG1.root", "tth_13TeV_all",ksig);
+    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG2.root", "tth_13TeV_all",ksig);
+    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG3.root", "tth_13TeV_all",ksig);
+    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG1.root", "tth_13TeV_all",kbkg);
+    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG2.root", "tth_13TeV_all",kbkg);
+    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG3.root", "tth_13TeV_all",kbkg);
+
 
     _dataloaderTrain->PrepareTrainingAndTestTree( mycuts, mycutb,
                                          "NormMode=NumEvents:!V" );
@@ -67,24 +63,13 @@ void TMVAAnalyzer::TMVAClassificationApp(){
     TString weightfile = dir + prefix + TString("_") + _methodName + TString(".weights.xml");
     _reader->BookMVA( _methodName, weightfile ); 
 
-    evalInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_VBFHToGG_M125_13TeV_amcatnlo_pythia8", "vbf_125_13TeV_TTHLeptonicTag",kVBF);
-    evalInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_GluGluHToGG_M125_13TeV_amcatnloFXFX_pythia8", "ggh_125_13TeV_TTHLeptonicTag",kGGHgg);
-    evalInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_DiPhotonJetsBox_M40_80-Sherpa", "dipho_13TeV_TTHLeptonicTag",kDiPho);
-    evalInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa", "dipho_13TeV_TTHLeptonicTag",kDiPho);
-    evalInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_QCD_Pt-30to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8", "qcd_13TeV_TTHLeptonicTag",kQCD );
-    evalInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_QCD_Pt-30toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8", "qcd_13TeV_TTHLeptonicTag",kQCD );
-    evalInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_QCD_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8", "qcd_13TeV_TTHLeptonicTag",kQCD );
-    evalInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_DoubleEG-Run2017-17Nov2017", "Data_13TeV_TTHLeptonicTag",kData );
-    evalInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_GJet_Pt-20to40_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8", "gjet_13TeV_TTHLeptonicTag",kGJet);
-    evalInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_GJet_Pt-20toInf_DoubleEMEnriched_MGG-40to80_TuneCP5_13TeV_Pythia8", "gjet_13TeV_TTHLeptonicTag",kGJet);
-    evalInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_GJet_Pt-40toInf_DoubleEMEnriched_MGG-80toInf_TuneCP5_13TeV_Pythia8", "gjet_13TeV_TTHLeptonicTag",kGJet);
-    evalInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_TTHToGG_M125_13TeV_amcatnloFXFX_madspin_pythia8", "tth_125_13TeV_TTHLeptonicTag",kTTH);
-    evalInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_WZHToGG_M125_13TeV_amcatnloFXFX_madspin_pythia8", "wzh_125_13TeV_TTHLeptonicTag",kWZH);
-    evalInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_TTGJets_TuneCP5_13TeV-amcatnloFXFX-madspin-pythia8", "ttgjet_13TeV_TTHLeptonicTag",kTTgJet);
-    evalInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_TTJets_TuneCP5_13TeV-amcatnloFXFX-pythia8", "ttjet_13TeV_TTHLeptonicTag",kTTJet);
-    evalInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_THQ_ctcvcp_HToGG_M125_13TeV-madgraph-pythia8", "thq_125_13TeV_TTHLeptonicTag",kTHQ);
-    evalInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_bbHToGG_M-125_4FS_yb2_13TeV_amcatnlo", "bbh_125_13TeV_TTHLeptonicTag",kBBH);
-    evalInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_TTGG_0Jets_TuneCP5_13TeV_amcatnlo_madspin_pythia8", "ttgg_13TeV_TTHLeptonicTag",kTTgg0Jet );
+    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG1.root", "tth_13TeV_all",ksig);
+    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG2.root", "tth_13TeV_all",ksig);
+    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG3.root", "tth_13TeV_all",ksig);
+    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG1.root", "tth_13TeV_all",kbkg);
+    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG2.root", "tth_13TeV_all",kbkg);
+    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG3.root", "tth_13TeV_all",kbkg);
+
 
     TFile * evalOutput = new TFile(_outputPath+(TString)"_evaluation.root","RECREATE");
     fom findMaxSign(0.01,fom::asimov); 
@@ -162,10 +147,12 @@ int main (int argc, char* argv[]){
     Float_t nTrees, minNodeSize,  maxDepth,  adaBoostB, baggingRatio, cSVM, gammaSVM;
     TString pathOutput, algoType;
 //    std::vector<TString> vars = {"nJets","sumJetPt","maxBTagVal", "secondMaxBTagVal","pho1_ptoM","pho2_ptoM","pho1_sceta","pho2_sceta", "pho1_scphi","pho2_scphi","diPhoY","minPhoID","maxPhoID","diPhoPtoM","btag_1","btag_2","btag_3","btag_4","jetPt_1","jetPt_2","jetPt_3","jetPt_4","jetEta_1","jetEta_2","jetEta_3","jetEta_4","pho1_hasPixelSeed","pho2_hasPixelSeed","thirdMaxBTagVal","MET","ttHMVA17tt" };//, "btag_1", "thirdMaxBTagVal"};
-//    std::vector<TString> vars = {"nJets","sumJetPt","maxBTagVal", "secondMaxBTagVal","pho1_ptoM","pho2_ptoM","pho1_sceta","pho2_sceta", "pho1_scphi","pho2_scphi","diPhoY","diPhoCosPhi","minPhoID","maxPhoID","diPhoPtoM","nJetsBl","btag_1","btag_2","btag_3","btag_4","jetPt_1","jetPt_2","jetPt_3","jetPt_4","jetE_1","jetE_2","jetE_3","jetE_4","jetEta_1","jetEta_2","jetEta_3","jetEta_4","jetPhi_1","jetPhi_2","jetPhi_3","jetPhi_4","pho1_sigmaEOverE","pho2_sigmaEOverE","thirdMaxBTagVal","MET","pho1_hasPixelSeed","pho2_hasPixelSeed" };//, "btag_1", "thirdMaxBTagVal"};
-//    std::vector<TString> vars = {"nJets","sumJetPt","maxBTagVal", "secondMaxBTagVal","pho1_ptoM","pho2_ptoM","pho1_sceta","pho2_sceta", "pho1_scphi","pho2_scphi","diPhoY","diPhoCosPhi","diPhoPtoM","nJetsBl","btag_1","btag_2","btag_3","btag_4","jetPt_1","jetPt_2","jetPt_3","jetPt_4","jetEta_1","jetEta_2","jetEta_3","jetEta_4","jetPhi_1","jetPhi_2","jetPhi_3","jetPhi_4","pho1_sigmaEOverE","pho2_sigmaEOverE","thirdMaxBTagVal" };//, "btag_1", "thirdMaxBTagVal"};
-    std::vector<TString> vars = {"ttHMVA17_new_30vars", "lepPt_1", "lepEta_1", "lepPhi_1" };//, "btag_1", "thirdMaxBTagVal"};
-//    std::vector<TString> vars = {"nJets", "sumJetPt", "maxBTagVal", "secondMaxBTagVal", "pho1_ptoM", "pho2_ptoM", "pho1_sceta", "pho2_sceta", "pho1_scphi", "pho2_scphi", "diPhoY", "minPhoID", "maxPhoID", "diPhoPtoM", "btag_1", "btag_2", "btag_3", "jetPt_1", "jetPt_2", "jetPt_3", "jetEta_1", "jetEta_2", "jetEta_3", "pho1_hasPixelSeed", "pho2_hasPixelSeed", "MET", "ttHMVA17_new_30vars", "lepPt_1", "lepEta_1", "lepPhi_1" };//, "btag_1", "thirdMaxBTagVal"};
+    std::vector<TString> vars = {"diPhoPtoM", "diPhoCosPhi", "diPhoY", "lepPt_1", "lepEta_1", 
+    "lepPhi_1","lepE_1", "nLep","nJetsBl","jetPt_1", "jetPt_2", 
+    "jetPt_3","jetPt_4","jetPt_5","jetPt_6", "jetEta_1", "jetEta_2", 
+    "jetEta_3", "jetEta_4", "jetEta_5", "jetEta_6", "jetPhi_1", "jetPhi_2", 
+    "jetPhi_3","jetPhi_4", "jetPhi_5","jetPhi_6", "btag_1", "btag_2", "btag_3", 
+    "btag_4", "btag_5", "btag_6", "jetE_1", "jetE_2", "jetE_3","jetE_4","jetE_5","jetE_6" };
     std::cout << " variables used: "; 
     for(auto var: vars){
         std::cout << var << "  ";

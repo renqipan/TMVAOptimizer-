@@ -88,7 +88,7 @@ public:
     void TMVAClassification();
     void TMVAClassificationApp();
     void fitandfindMax();
-    enum sampleType{kGJet, kTTggJet, kQCD, kVBF, kTTH, kDiPho, kTTgg0Jet, kTTJet, kTTgJet,kGGHgg, kTgJet, kData, kWZH, kTHQ, kTHW, kBBH};
+    enum sampleType{ksig, kbkg};
 private:
     void trainSample (TTree * sample, int sampNo);
     void trainInterface (TString fName, TString tName, int sampNo);

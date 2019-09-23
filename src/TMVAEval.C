@@ -29,13 +29,14 @@ void TMVAAnalyzer::evalSample (TTree * sample, int sampNo, bool addEvalBranch,TS
         sample->GetEntry(i);
         BDTvalue = _reader->EvaluateMVA(_methodName );
         if(addEvalBranch)        newBranch->Fill();
-        if(kTTH == sampNo){
+        if(ksig == sampNo){
             _hEvalSignal->Fill(BDTvalue, weight);
             for(int indexBin = 0; indexBin <= _hEvalSignal->FindFixBin(BDTvalue); indexBin ++){ 
                 _distOfInterestSig.at(indexBin)->Fill(diPhoMass, weight);
             }
-        } else if(diPhoMass > 135. || diPhoMass < 115. ){
-            if(kData == sampNo){
+        } 
+        else if(diPhoMass > 135. || diPhoMass < 115. ){
+            if(kbkg == sampNo){
                 _hEvalBkgData->Fill(BDTvalue);
                 for(int indexBin = 1; indexBin <= _hEvalBkgData->FindFixBin(BDTvalue); indexBin ++){ 
                     _distOfInterestBkg.at(indexBin)->Fill(diPhoMass);
@@ -46,7 +47,7 @@ void TMVAAnalyzer::evalSample (TTree * sample, int sampNo, bool addEvalBranch,TS
                 else if(i%5 == 1 || i%5 == 3) _hEvalBkgTest->Fill(BDTvalue, weight/0.4);
             }
         } else {
-            if(kData != sampNo){
+            if(kbkg != sampNo){
 //                weight = weight / 25.;
                 _hEvalBkgSR->Fill(BDTvalue, weight); 
             }

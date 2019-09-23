@@ -29,12 +29,13 @@ void TMVAAnalyzer::trainSample ( TTree * sample, int sampNo){
             _trainVars[varInd] = dummyVar;
             varInd++;
         }     
-        if( sampNo == kTTH ){
+        if( sampNo == sig ){
             /* a specific weight can be given for a particular sample independent of the provided event weight in the tree. Change this weight (or comment it out accordingly) */ 
             weight = weight / TMath::Sqrt(pho1_sigmaEOverE*pho1_sigmaEOverE+pho2_sigmaEOverE*pho2_sigmaEOverE);
             if (i%5 == 0 || i%5 == 2 || i%5 == 4) _dataloaderTrain->AddSignalTrainingEvent( _trainVars, weight );
             else if(i%5 == 1 || i%5 == 3) _dataloaderTrain->AddSignalTestEvent    ( _trainVars, weight );
-        } else {
+        } 
+        else {
             if (i%5 == 0 || i%5 == 2 || i%5 == 4) _dataloaderTrain->AddBackgroundTrainingEvent( _trainVars, weight );
             else if(i%5 == 1 || i%5 == 3) _dataloaderTrain->AddBackgroundTestEvent    ( _trainVars, weight );
         }
