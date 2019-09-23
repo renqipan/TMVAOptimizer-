@@ -22,7 +22,7 @@ void TMVAAnalyzer::TMVAClassification(){
     TCut mycutb = "";
     std::cout << "Performing training..." << std::endl;
     /* TMVAOptimizer.h header includes the sampleNo typedef list */
-    trainInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_VBFHToGG_M125_13TeV_amcatnlo_pythia8", "vbf_125_13TeV_TTHLeptonicTag",kVBF);
+    trainInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_VBFHToGG_M125_13TeV_amcatnlo_pyth:wqia8", "vbf_125_13TeV_TTHLeptonicTag",kVBF);
     trainInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_GluGluHToGG_M125_13TeV_amcatnloFXFX_pythia8", "ggh_125_13TeV_TTHLeptonicTag",kGGHgg);
     trainInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_DiPhotonJetsBox_M40_80-Sherpa", "dipho_13TeV_TTHLeptonicTag",kDiPho);
     trainInterface("/eos/user/m/msahin/TTH/samples2017/MVAlepton/output_DiPhotonJetsBox_MGG-80toInf_13TeV-Sherpa", "dipho_13TeV_TTHLeptonicTag",kDiPho);
