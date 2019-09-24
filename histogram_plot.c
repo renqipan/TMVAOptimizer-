@@ -18,7 +18,7 @@ void histogram_plot(){
 	
 	TCanvas* c= new TCanvas();
 	train_S->SetTitle("BDT output distribution;Response value;Density");
-	train_S->Draw();
+	train_S->Draw("E");
 	train_B->Draw("same");
 	test_S->Draw("sameHist");
 	test_B->Draw("sameHist");
