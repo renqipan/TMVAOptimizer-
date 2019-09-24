@@ -5,8 +5,8 @@ void newRootFile(){
 	tc->Add("ttHiggs0MToGG1.root");
 	tc->Add("ttHiggs0MToGG2.root");
   */
-  string fileName[6]={"ttHiggs0PToGG1.root","ttHiggs0PToGG2.root","ttHiggs0PToGG3.root","ttHiggs0MToGG1.root","ttHiggs0MToGG2.root","ttHiggs0MToGG3.root"};
-  for(int kk=0;kk<6;kk++){
+  string fileName[3]={"ttHiggs0PToGG1.root","ttHiggs0PToGG2.root","ttHToGG_M125_13TeV_powheg.root"};
+  for(int kk=0;kk<3;kk++){
     TFile *sigFile = new TFile(fileName[kk].c_str(),"update");
     TTree *tc=(TTree *) sigFile->Get("tthLeptonicTagDumper/trees/tth_13TeV_all");
   	

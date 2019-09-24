@@ -36,16 +36,16 @@ void application_BDT(){
 
 
 	TString BDTFileName="TMVAClassification_BDT.weights.xml";
-	TString dir="/home/renqi/Documents/tth_todiph/dataset_diph_lep3/weights/";
+	TString dir="/afs/cern.ch/user/r/repan/CMSSW_9_4_0/src/TMVAOptimizer/bin/output";
 	TString BTDFile=dir+BDTFileName;
 	reader->BookMVA("BDT method", BTDFile );
 	int nbin=100;
-    TH1F *histBDT= new TH1F( "MVA_BDT_sig","MVA_BDT_sig",nbin, -0.5,0.5 );
+    TH1F *histBDT= new TH1F( "MVA_BDT_powheg","MVA_BDT_powheg",nbin, -0.5,0.5 );
     //define root file and tree
 	TChain *tsignal= new  TChain("tth_13TeV_all");
-	tsignal->Add("ttHiggs0PToGG1.root");
-	tsignal->Add("ttHiggs0PToGG2.root");
-	tsignal->Add("ttHiggs0PToGG3.root");
+	tsignal->Add("/afs/cern.ch/user/r/repan/root_file/ttHToGG_M125_13TeV_powheg.root");
+	//tsignal->Add("ttHiggs0PToGG2.root");
+	//tsignal->Add("ttHiggs0PToGG3.root");
 
 	
 	for(int jj=0;jj<39;jj++)
@@ -65,7 +65,7 @@ void application_BDT(){
 	// Get elapsed time
    sw.Stop();
    std::cout << "--- End of event loop: "; sw.Print();
-    TString outputFile("tth_BDT_me3.root");
+    TString outputFile("tth_BDT_powheg.root");
     TFile *target  = new TFile( outputFile,"update" );
     histBDT->Write();
 
