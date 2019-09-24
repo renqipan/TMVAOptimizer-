@@ -36,7 +36,7 @@ void application_BDT(){
 
 
 	TString BDTFileName="TMVAClassification_BDT.weights.xml";
-	TString dir="/afs/cern.ch/user/r/repan/CMSSW_9_4_0/src/TMVAOptimizer/bin/output";
+	TString dir="/afs/cern.ch/user/r/repan/CMSSW_9_4_0/src/TMVAOptimizer/bin/output/";
 	TString BTDFile=dir+BDTFileName;
 	reader->BookMVA("BDT method", BTDFile );
 	int nbin=100;
@@ -65,7 +65,7 @@ void application_BDT(){
 	// Get elapsed time
    sw.Stop();
    std::cout << "--- End of event loop: "; sw.Print();
-    TString outputFile("tth_BDT_powheg.root");
+    TString outputFile("tth_BDT_powheg_apply.root");
     TFile *target  = new TFile( outputFile,"update" );
     histBDT->Write();
 
