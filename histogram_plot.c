@@ -13,6 +13,8 @@ void histogram_plot(){
 	test_S->SetLineColor(3);
 	test_B->SetLineColor(4);
 	powheg->SetLineColor(5);
+	float scale=1.0/powheg->Integral("width");
+	powheg->Scale(scale);
 	
 	TCanvas* c= new TCanvas();
 	train_S->SetTitle("BDT output distribution;Response value;Density");
