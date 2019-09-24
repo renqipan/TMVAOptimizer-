@@ -12,7 +12,7 @@ void histogram_plot(){
 	train_B->SetLineColor(2);
 	test_S->SetLineColor(3);
 	test_B->SetLineColor(4);
-	powheg->SetLineColor(9);
+	powheg->SetLineColor(6);
 	float scale=1.0/powheg->Integral("width");
 	powheg->Scale(scale);
 	
