@@ -26,4 +26,4 @@ void histogram_plot(){
 	leg.DrawClone("Same");
 
 	gPad->Print("add_powheg.png");
-
+}
