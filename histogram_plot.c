@@ -9,12 +9,12 @@ void plot_hist(){
 	TH1F* test_B=(TH1F*) file1->Get("Method_BDT/BDT/MVA_BDT_B");
 	TH1F* powheg=(TH1F*)file2->Get("MVA_BDT_powheg");
 	TCanvas* c= new TCanvas();
-	train_S->SetTitle("BDT output distribution","Response value","Density");
+	train_S->SetTitle("BDT output distribution;Response value;Density");
 	train_S->Draw();
 	train_B->Draw("same");
 	test_S->Draw("sameHist");
 	test_B->Draw("sameHist");
-	powheg->("same");
+	powheg->Draw("same");
 
 	TLegend leg(.7,.7,.9,.9);
 	leg.SetFillColor(0);
@@ -28,8 +28,12 @@ void plot_hist(){
 	gPad->Print("add_powheg.png");
 
 
+<<<<<<< HEAD
 
 
 
 
 }
+=======
+}
+>>>>>>> e7089fd2c74d8a9a469e8a825c97874296699193
