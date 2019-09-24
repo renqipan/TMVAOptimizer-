@@ -27,13 +27,3 @@ void histogram_plot(){
 
 	gPad->Print("add_powheg.png");
 
-
-<<<<<<< HEAD
-
-
-
-
-}
-=======
-}
->>>>>>> e7089fd2c74d8a9a469e8a825c97874296699193
