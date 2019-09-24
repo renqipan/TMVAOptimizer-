@@ -30,7 +30,7 @@ void histogram_plot(){
 	leg.AddEntry(train_B,"Train-odd");
 	leg.AddEntry(test_S,"Test-even");
 	leg.AddEntry(test_B,"Test-odd");
-	leg.AddEntry(powheg,"powheg");
+	leg.AddEntry(powheg,"apply-powheg");
 	leg.DrawClone("Same");
 
 	gPad->Print("add_powheg.png");
