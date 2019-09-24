@@ -4,7 +4,7 @@ void histogram_plot(){
 	TFile* file2=TFile::Open("/afs/cern.ch/user/r/repan/CMSSW_9_4_0/src/TMVAOptimizer/tth_BDT_powheg_apply.root");
 
 	TH1F* train_S=(TH1F*) file1->Get("Method_BDT/BDT/MVA_BDT_Train_S");
-	TH1F* train_B=(TH1F*) file1->Get("Method_BDT/BDT/MVA_BDT_Train_S");
+	TH1F* train_B=(TH1F*) file1->Get("Method_BDT/BDT/MVA_BDT_Train_B");
 	TH1F* test_S=(TH1F*) file1->Get("Method_BDT/BDT/MVA_BDT_S");
 	TH1F* test_B=(TH1F*) file1->Get("Method_BDT/BDT/MVA_BDT_B");
 	TH1F* powheg=(TH1F*)file2->Get("MVA_BDT_powheg");
