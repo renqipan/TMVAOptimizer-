@@ -1,4 +1,4 @@
-void plot_hist(){
+void histogram_plot(){
 	gStyle->SetOptStat(0);
 	TFile* file1=TFile::Open("/afs/cern.ch/user/r/repan/CMSSW_9_4_0/src/TMVAOptimizer/bin/output/TMVA.root");
 	TFile* file2=TFile::Open("/afs/cern.ch/user/r/repan/CMSSW_9_4_0/src/TMVAOptimizer/tth_BDT_powheg_apply.root");
