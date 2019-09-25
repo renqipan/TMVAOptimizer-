@@ -30,11 +30,7 @@ void histogram_plot(){
 	leg.AddEntry(train_B,"Train-odd");
 	leg.AddEntry(test_S,"Test-even");
 	leg.AddEntry(test_B,"Test-odd");
-<<<<<<< HEAD
-	leg.AddEntry(powheg,"apply-powheg");
-=======
 	//leg.AddEntry(powheg,"apply-powheg");
->>>>>>> b2bd81e44295b15eda569bf98bbcacc1f26a7a94
 	leg.DrawClone("Same");
 
 	gPad->Print("hadronic.png");
