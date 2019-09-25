@@ -12,7 +12,7 @@ void histogram_plot(){
 	train_B->SetLineColor(2);
 	test_S->SetLineColor(3);
 	test_B->SetLineColor(4);
-	powheg->SetLineColor(5);
+	powheg->SetLineColor(6);
 	float scale=1.0/powheg->Integral("width");
 	powheg->Scale(scale);
 	
@@ -30,7 +30,7 @@ void histogram_plot(){
 	leg.AddEntry(train_B,"Train-odd");
 	leg.AddEntry(test_S,"Test-even");
 	leg.AddEntry(test_B,"Test-odd");
-	leg.AddEntry(powheg,"powheg");
+	leg.AddEntry(powheg,"apply-powheg");
 	leg.DrawClone("Same");
 
 	gPad->Print("add_powheg.png");

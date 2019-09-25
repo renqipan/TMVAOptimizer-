@@ -4,7 +4,7 @@
 using namespace TMVA;
 /* This method includes the list of trees and initialization of the TMVA instance */
 void TMVAAnalyzer::TMVAClassification(){
-    TString outfileName( _outputPath+"/TMVA.root" );
+    TString outfileName( _outputPath+"/TMVA_had.root" );
     (TMVA::gConfig().GetIONames()).fWeightFileDir = _outputPath;
     outputFile = TFile::Open( outfileName, "RECREATE" );
     _factory = new TMVA::Factory( (TString)"TMVAClassification", outputFile,
@@ -22,12 +22,12 @@ void TMVAAnalyzer::TMVAClassification(){
     TCut mycutb = "";
     std::cout << "Performing training..." << std::endl;
     /* TMVAOptimizer.h header includes the sampleNo typedef list */
-    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG1.root", "tth_13TeV_all",ksig);
-    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG2.root", "tth_13TeV_all",ksig);
-    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG3.root", "tth_13TeV_all",ksig);
-    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG1.root", "tth_13TeV_all",kbkg);
-    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG2.root", "tth_13TeV_all",kbkg);
-    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG3.root", "tth_13TeV_all",kbkg);
+    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG1.root", "tthHadronicTagDumper/trees/tth_13TeV_all",ksig);
+    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG2.root", "tthHadronicTagDumper/trees/tth_13TeV_all",ksig);
+    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG3.root", "tthHadronicTagDumper/trees/tth_13TeV_all",ksig);
+    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG1.root", "tthHadronicTagDumper/trees/tth_13TeV_all",kbkg);
+    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG2.root", "tthHadronicTagDumper/trees/tth_13TeV_all",kbkg);
+    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG3.root", "tthHadronicTagDumper/trees/tth_13TeV_all",kbkg);
 
 
     _dataloaderTrain->PrepareTrainingAndTestTree( mycuts, mycutb,
@@ -63,12 +63,12 @@ void TMVAAnalyzer::TMVAClassificationApp(){
     TString weightfile = dir + prefix + TString("_") + _methodName + TString(".weights.xml");
     _reader->BookMVA( _methodName, weightfile ); 
 
-    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG1.root", "tth_13TeV_all",ksig);
-    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG2.root", "tth_13TeV_all",ksig);
-    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG3.root", "tth_13TeV_all",ksig);
-    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG1.root", "tth_13TeV_all",kbkg);
-    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG2.root", "tth_13TeV_all",kbkg);
-    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG3.root", "tth_13TeV_all",kbkg);
+    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG1.root", "tthHadronicTagDumper/trees/tth_13TeV_all",ksig);
+    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG2.root", "tthHadronicTagDumper/trees/tth_13TeV_all",ksig);
+    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG3.root", "tthHadronicTagDumper/trees/tth_13TeV_all",ksig);
+    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG1.root", "tthHadronicTagDumper/trees/tth_13TeV_all",kbkg);
+    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG2.root", "tthHadronicTagDumper/trees/tth_13TeV_all",kbkg);
+    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG3.root", "tthHadronicTagDumper/trees/tth_13TeV_all",kbkg);
 
 
     TFile * evalOutput = new TFile(_outputPath+(TString)"_evaluation.root","RECREATE");
@@ -147,12 +147,20 @@ int main (int argc, char* argv[]){
     Float_t nTrees, minNodeSize,  maxDepth,  adaBoostB, baggingRatio, cSVM, gammaSVM;
     TString pathOutput, algoType;
 //    std::vector<TString> vars = {"nJets","sumJetPt","maxBTagVal", "secondMaxBTagVal","pho1_ptoM","pho2_ptoM","pho1_sceta","pho2_sceta", "pho1_scphi","pho2_scphi","diPhoY","minPhoID","maxPhoID","diPhoPtoM","btag_1","btag_2","btag_3","btag_4","jetPt_1","jetPt_2","jetPt_3","jetPt_4","jetEta_1","jetEta_2","jetEta_3","jetEta_4","pho1_hasPixelSeed","pho2_hasPixelSeed","thirdMaxBTagVal","MET","ttHMVA17tt" };//, "btag_1", "thirdMaxBTagVal"};
-    std::vector<TString> vars = {"diPhoPtoM", "diPhoCosPhi", "diPhoY", "lepPt_1", "lepEta_1", 
+ /*   std::vector<TString> vars = {"diPhoPtoM", "diPhoCosPhi", "diPhoY", "lepPt_1", "lepEta_1", 
     "lepPhi_1","lepE_1", "nLep","nJetsBl","jetPt_1", "jetPt_2", 
     "jetPt_3","jetPt_4","jetPt_5","jetPt_6", "jetEta_1", "jetEta_2", 
     "jetEta_3", "jetEta_4", "jetEta_5", "jetEta_6", "jetPhi_1", "jetPhi_2", 
     "jetPhi_3","jetPhi_4", "jetPhi_5","jetPhi_6", "btag_1", "btag_2", "btag_3", 
     "btag_4", "btag_5", "btag_6", "jetE_1", "jetE_2", "jetE_3","jetE_4","jetE_5","jetE_6" };
+  */  
+    std::vector<TString> vars={ "dipho_sumpt", "dipho_cosphi", "dipho_rapidity", "nb_loose","jet1_pt", "jet2_pt", "jet3_pt",
+    "jet4_pt","jet5_pt","jet6_pt","jet7_pt","jet8_pt", "jet1_eta", "jet2_eta", "jet3_eta", 
+    "jet4_eta", "jet5_eta", "jet6_eta", "jet7_eta", "jet8_eta", "jet1_phi", "jet2_phi", "jet3_phi",
+     "jet4_phi", "jet5_phi", "jet6_phi", "jet7_phi", "jet8_phi", "jet1_bdiscriminant", 
+     "jet2_bdiscriminant", "jet3_bdiscriminant", "jet4_bdiscriminant", "jet5_bdiscriminant", 
+     "jet6_bdiscriminant", "jet7_bdiscriminant", "jet8_bdiscriminant", "jet1_energy",
+      "jet2_energy", "jet3_energy", "jet4_energy", "jet5_energy", "jet6_energy", "jet7_energy", "jet8_energy","mass"};
     std::cout << " variables used: "; 
     for(auto var: vars){
         std::cout << var << "  ";
