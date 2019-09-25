@@ -18,10 +18,10 @@ void histogram_plot(){
 	
 	TCanvas* c= new TCanvas();
 	train_S->SetTitle("BDT output distribution;Response value;Density");
-	train_S->Draw();
-	train_B->Draw("same");
-	test_S->Draw("sameHist");
-	test_B->Draw("sameHist");
+	train_S->DrawNormalized();
+	train_B->DrawNormalized("same");
+	test_S->DrawNormalized("sameHist");
+	test_B->DrawNormalized("sameHist");
 	//powheg->Draw("same");
 
 	TLegend leg(.7,.7,.9,.9);
@@ -33,5 +33,5 @@ void histogram_plot(){
 	//leg.AddEntry(powheg,"apply-powheg");
 	leg.DrawClone("Same");
 
-	gPad->Print("hadronic.png");
+	gPad->Print("hadronic_norl.png");
 }
