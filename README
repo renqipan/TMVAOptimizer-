@@ -4,7 +4,7 @@ The software is tested with CMSSW9 and ROOT6. After initializing these framework
 
 The current version of the software is tailored for the ttH-gg analysis but can be generalized with few minor modifications.
 ./TMVAOptimizer <Algorithm> <Hyperparameter arguments>
-run Example:  ./TMVAOptimizer BDT 300 1 21 0.3 0.6 /afs/cern.ch/user/r/repan/CMSSW_9_4_0/src/TMVAOptimizer/bin/output
+run Example:  ./TMVAOptimizer BDT 1800 1 21 0.3 0.6 /afs/cern.ch/user/r/repan/CMSSW_9_4_0/src/TMVAOptimizer/bin/output
 
 The python script enabling the hyperparameter scan using HTCONDOR is available upon request. 
 
