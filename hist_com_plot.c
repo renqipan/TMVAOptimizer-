@@ -8,10 +8,10 @@ void hist_com_plot(){
 	TH1F* test_S=(TH1F*) file1->Get("SignalValuesTest");
 	TH1F* test_B=(TH1F*) file1->Get("BackgroundValuesTest");
 	TH1F* powheg=(TH1F*)file2->Get("MVA_BDT_powheg");	
-	train_S->SetBins(50,-0.2,0.2);
-	train_B->SetBins(50,-0.2,0.2);
-	test_S->SetBins(50,-0.2,0.2);
-	test_B->SetBins(50,-0.2,0.2);
+//	train_S->SetBins(50,-0.2,0.2);
+//	train_B->SetBins(50,-0.2,0.2);
+//	test_S->SetBins(50,-0.2,0.2);
+//	test_B->SetBins(50,-0.2,0.2);
 
 	train_S->SetLineColor(1);
 	train_B->SetLineColor(2);
