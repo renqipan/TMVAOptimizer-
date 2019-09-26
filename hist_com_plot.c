@@ -20,7 +20,7 @@ void hist_com_plot(){
 	powheg->SetLineColor(6);
 	float scale=1.0/powheg->Integral("width");
 	powheg->Scale(scale);
-	
+	test_B->SetAxisRange(-0.2,0.2);	
 	TCanvas* c= new TCanvas();
 	train_S->SetTitle("BDT output distribution;Response value;Density");
 	test_B->Draw("Hist");
