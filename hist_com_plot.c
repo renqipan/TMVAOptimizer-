@@ -8,6 +8,11 @@ void hist_com_plot(){
 	TH1F* test_S=(TH1F*) file1->Get("SignalValuesTest");
 	TH1F* test_B=(TH1F*) file1->Get("BackgroundValuesTest");
 	TH1F* powheg=(TH1F*)file2->Get("MVA_BDT_powheg");	
+	train_S->SetBins(50,-0.2,0.2);
+	train_B->SetBins(50,-0.2,0.2);
+	test_S->SetBins(50,-0.2,0.2);
+	test_B->SetBins(50,-0.2,0.2);
+
 	train_S->SetLineColor(1);
 	train_B->SetLineColor(2);
 	test_S->SetLineColor(3);
@@ -18,10 +23,10 @@ void hist_com_plot(){
 	
 	TCanvas* c= new TCanvas();
 	train_S->SetTitle("BDT output distribution;Response value;Density");
-	train_S->DrawNormalized();
-	train_B->DrawNormalized("same");
-	test_S->DrawNormalized("sameHist");
-	test_B->DrawNormalized("sameHist");
+	train_S->Draw();
+	train_B->Draw("same");
+	test_S->Draw("sameHist");
+	test_B->Draw("sameHist");
 	//powheg->DrawNormalized("same");
 
 	TLegend leg(.7,.7,.9,.9);
