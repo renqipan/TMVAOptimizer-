@@ -8,10 +8,6 @@ void hist_com_plot(){
 	TH1D* test_S=(TH1D*) file1->Get("SignalValuesTest");
 	TH1D* test_B=(TH1D*) file1->Get("BackgroundValuesTest");
 	TH1F* powheg=(TH1F*)file2->Get("MVA_BDT_powheg");	
-//	train_S->SetBins(50,-0.2,0.2);
-//	train_B->SetBins(50,-0.2,0.2);
-//	test_S->SetBins(50,-0.2,0.2);
-//	test_B->SetBins(50,-0.2,0.2);
 
 	train_S->SetLineColor(1);
 	train_B->SetLineColor(2);
@@ -32,10 +28,10 @@ void hist_com_plot(){
 
 	TLegend leg(.7,.7,.9,.9);
 	leg.SetFillColor(0);
-	leg.AddEntry(train_S,"Train-even");
-	leg.AddEntry(train_B,"Train-odd");
-	leg.AddEntry(test_S,"Test-even");
-	leg.AddEntry(test_B,"Test-odd");
+	leg.AddEntry(train_S,"Train-sig");
+	leg.AddEntry(train_B,"Train-bkg");
+	leg.AddEntry(test_S,"Test-sig");
+	leg.AddEntry(test_B,"Test-bkg");
 	//leg.AddEntry(powheg,"apply-powheg");
 	leg.DrawClone("Same");
 
