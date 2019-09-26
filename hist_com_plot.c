@@ -1,4 +1,4 @@
-void histogram_plot(){
+void hist_com_plot(){
 	gStyle->SetOptStat(0);
 	TFile* file1=TFile::Open("/afs/cern.ch/user/r/repan/root_file/ozgur.root");
 	TFile* file2=TFile::Open("/afs/cern.ch/user/r/repan/CMSSW_9_4_0/src/TMVAOptimizer/tth_BDT_powheg_app.root");
@@ -33,5 +33,5 @@ void histogram_plot(){
 	//leg.AddEntry(powheg,"apply-powheg");
 	leg.DrawClone("Same");
 
-	gPad->Print("hadronic_norl.png");
+	gPad->Print("leptonic_ozgur.png");
 }
