@@ -23,10 +23,11 @@ void hist_com_plot(){
 	
 	TCanvas* c= new TCanvas();
 	train_S->SetTitle("BDT output distribution;Response value;Density");
-	train_S->Draw();
-	train_B->Draw("same");
+	test_B->Draw("Hist");
 	test_S->Draw("sameHist");
-	test_B->Draw("sameHist");
+	train_B->Draw("same");
+	train_S->Draw("same");
+
 	//powheg->DrawNormalized("same");
 
 	TLegend leg(.7,.7,.9,.9);
