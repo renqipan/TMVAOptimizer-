@@ -8,6 +8,7 @@ void histogram_plot(){
 	TH1F* test_S=(TH1F*) file1->Get("Method_BDT/BDT/MVA_BDT_S");
 	TH1F* test_B=(TH1F*) file1->Get("Method_BDT/BDT/MVA_BDT_B");
 	TH1F* powheg=(TH1F*)file2->Get("MVA_BDT_powheg");
+	train_S->SetBins(100,-0.2,0.2);
 	train_S->SetLineColor(1);
 	train_B->SetLineColor(2);
 	test_S->SetLineColor(3);
