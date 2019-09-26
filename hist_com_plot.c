@@ -3,10 +3,10 @@ void hist_com_plot(){
 	TFile* file1=TFile::Open("/afs/cern.ch/user/r/repan/root_file/ozgur.root");
 	TFile* file2=TFile::Open("/afs/cern.ch/user/r/repan/CMSSW_9_4_0/src/TMVAOptimizer/tth_BDT_powheg_app.root");
 
-	TH1F* train_S=(TH1F*) file1->Get("SignalValuesTra");
-	TH1F* train_B=(TH1F*) file1->Get("BackgroundValuesTra");
-	TH1F* test_S=(TH1F*) file1->Get("SignalValuesTest");
-	TH1F* test_B=(TH1F*) file1->Get("BackgroundValuesTest");
+	TH1D* train_S=(TH1D*) file1->Get("SignalValuesTra");
+	TH1D* train_B=(TH1D*) file1->Get("BackgroundValuesTra");
+	TH1D* test_S=(TH1D*) file1->Get("SignalValuesTest");
+	TH1D* test_B=(TH1D*) file1->Get("BackgroundValuesTest");
 	TH1F* powheg=(TH1F*)file2->Get("MVA_BDT_powheg");	
 //	train_S->SetBins(50,-0.2,0.2);
 //	train_B->SetBins(50,-0.2,0.2);
