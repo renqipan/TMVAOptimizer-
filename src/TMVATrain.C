@@ -29,7 +29,7 @@ void TMVAAnalyzer::trainSample ( TTree * sample, int sampNo){
             _trainVars[varInd] = dummyVar;
             varInd++;
         }  
-     /*     
+          
         if( sampNo == ksig ){
             weight = weight;
             if (i%5 == 0 || i%5 == 2 || i%5 == 4) _dataloaderTrain->AddSignalTrainingEvent( _trainVars, weight );
@@ -39,7 +39,7 @@ void TMVAAnalyzer::trainSample ( TTree * sample, int sampNo){
             if (i%5 == 0 || i%5 == 2 || i%5 == 4) _dataloaderTrain->AddBackgroundTrainingEvent( _trainVars, weight );
             else if(i%5 == 1 || i%5 == 3) _dataloaderTrain->AddBackgroundTestEvent    ( _trainVars, weight );
         }
-    */    
+        
 
     }
 }

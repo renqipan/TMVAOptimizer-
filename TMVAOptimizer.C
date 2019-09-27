@@ -30,10 +30,10 @@ void TMVAAnalyzer::TMVAClassification(){
     trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG2.root", "tth_13TeV_all",kbkg);
     trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG3.root", "tth_13TeV_all",kbkg);
 
-   _dataloaderTrain->SetBackgroundWeightExpression( "weight" ); //Set individual event weights 
-  _dataloaderTrain->SetSignalWeightExpression("weight"); 
+   //_dataloaderTrain->SetBackgroundWeightExpression( "weight" ); //Set individual event weights 
+  //_dataloaderTrain->SetSignalWeightExpression("weight"); 
     _dataloaderTrain->PrepareTrainingAndTestTree( mycuts, mycutb,
-                                         "nTrain_Signal=0:nTrain_Background=0:SplitMode=Random:NormMode=NumEvents:!V" );
+                                         "SplitMode=Random:NormMode=NumEvents:!V" );
     if(_methodName.Contains("BDT")){
         _factory->BookMethod(_dataloaderTrain, TMVA::Types::kBDT, _methodName,
                               (TString)"!H:!V:NTrees="+TString::Format("%5.0f",_nTrees)+":MinNodeSize="+TString::Format("%5.1f",_minNodeSize)+"%:MaxDepth="+TString::Format("%5.0f",_maxDepth)+":BoostType=AdaBoost:AdaBoostBeta="+TString::Format("%5.1f",_adaBoostB)+":UseBaggedBoost:BaggedSampleFraction="+TString::Format("%5.1f",_baggingRatio)+":SeparationType=GiniIndex:nCuts=500::VarTransform=Norm" );
