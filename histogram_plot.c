@@ -1,7 +1,7 @@
 void histogram_plot(){
 	gStyle->SetOptStat(0);
-	TFile* file1=TFile::Open("/afs/cern.ch/user/r/repan/root_file/TMVA_had.root");
-	TFile* file2=TFile::Open("/afs/cern.ch/user/r/repan/CMSSW_9_4_0/src/TMVAOptimizer/tth_BDT_powheg_app.root");
+	TFile* file1=TFile::Open("/afs/cern.ch/user/r/repan/CMSSW_9_4_0/src/TMVAOptimizer/bin/output/TMVA.root");
+	TFile* file2=TFile::Open("/afs/cern.ch/user/r/repan/CMSSW_9_4_0/src/TMVAOptimizer/tth_BDT_powheg_apply.root");
 
 	TH1F* train_S=(TH1F*) file1->Get("Method_BDT/BDT/MVA_BDT_Train_S");
 	TH1F* train_B=(TH1F*) file1->Get("Method_BDT/BDT/MVA_BDT_Train_B");
@@ -18,10 +18,10 @@ void histogram_plot(){
 	
 	TCanvas* c= new TCanvas();
 	train_S->SetTitle("BDT output distribution;Response value;Density");
-	train_S->DrawNormalized();
-	train_B->DrawNormalized("same");
-	test_S->DrawNormalized("sameHist");
-	test_B->DrawNormalized("sameHist");
+	train_S->Draw();
+	train_B->Draw("same");
+	test_S->Draw("sameHist");
+	test_B->Draw("sameHist");
 	powheg->DrawNormalized("same");
 
 	TLegend leg(.7,.7,.9,.9);
@@ -33,5 +33,5 @@ void histogram_plot(){
 	leg.AddEntry(powheg,"apply-powheg");
 	leg.DrawClone("Same");
 
-	gPad->Print("hadronic_norl.png");
+	gPad->Print("leptonic.png");
 }
