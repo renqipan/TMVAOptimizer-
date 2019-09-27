@@ -19,8 +19,8 @@ void TMVAAnalyzer::TMVAClassification(){
     }     
     
     TCut mycuts, mycutb;
-    mycuts="tthMVA_RunII>0.8435  && leadIDMVA > -0.7 && subleadIDMVA>-0.7 &&n_ele+n_muons>0";
-    mycutb="tthMVA_RunII>0.8435 && leadIDMVA > -0.7 && subleadIDMVA>-0.7 &&n_ele+n_muons>0";
+    mycuts="";
+    mycutb="";
     std::cout << "Performing training..." << std::endl;
     /* TMVAOptimizer.h header includes the sampleNo typedef list */
     trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG1.root", "tth_13TeV_all",ksig);
