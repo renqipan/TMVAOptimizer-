@@ -24,9 +24,15 @@ void application_BDT(){
 	//Float_t diPhoPtoM,diPhoCosPhi,diPhoY;
 	//Float_t lepPt_1,lepEta_1,lepPhi_1,lepE_1,nLep,nJetsBl;
 
-	TString variables[45]={"dipho_sumpt", "dipho_cosphi", "dipho_rapidity", "nb_loose","jet1_pt", "jet2_pt", "jet3_pt","jet4_pt","jet5_pt","jet6_pt","jet7_pt","jet8_pt", "jet1_eta", "jet2_eta", "jet3_eta", "jet4_eta", "jet5_eta", "jet6_eta", "jet7_eta", "jet8_eta", "jet1_phi", "jet2_phi", "jet3_phi", "jet4_phi", "jet5_phi", "jet6_phi", "jet7_phi", "jet8_phi", "jet1_bdiscriminant", "jet2_bdiscriminant", "jet3_bdiscriminant", "jet4_bdiscriminant", "jet5_bdiscriminant", "jet6_bdiscriminant", "jet7_bdiscriminant", "jet8_bdiscriminant", "jet1_energy", "jet2_energy", "jet3_energy", "jet4_energy", "jet5_energy", "jet6_energy", "jet7_energy", "jet8_energy","mass" };
-	Float_t values[45];
-	for(int kk=0;kk<45;kk++)
+	//TString variables[45]={"dipho_sumpt", "dipho_cosphi", "dipho_rapidity", "nb_loose","jet1_pt", "jet2_pt", "jet3_pt","jet4_pt","jet5_pt","jet6_pt","jet7_pt","jet8_pt", "jet1_eta", "jet2_eta", "jet3_eta", "jet4_eta", "jet5_eta", "jet6_eta", "jet7_eta", "jet8_eta", "jet1_phi", "jet2_phi", "jet3_phi", "jet4_phi", "jet5_phi", "jet6_phi", "jet7_phi", "jet8_phi", "jet1_bdiscriminant", "jet2_bdiscriminant", "jet3_bdiscriminant", "jet4_bdiscriminant", "jet5_bdiscriminant", "jet6_bdiscriminant", "jet7_bdiscriminant", "jet8_bdiscriminant", "jet1_energy", "jet2_energy", "jet3_energy", "jet4_energy", "jet5_energy", "jet6_energy", "jet7_energy", "jet8_energy","mass" };
+	TString variables[39]={"diPhoPtoM", "diPhoCosPhi", "diPhoY", "lepPt_1", "lepEta_1", 
+    "lepPhi_1","lepE_1", "nLep","nJetsBl","jetPt_1", "jetPt_2", 
+    "jetPt_3","jetPt_4","jetPt_5","jetPt_6", "jetEta_1", "jetEta_2", 
+    "jetEta_3", "jetEta_4", "jetEta_5", "jetEta_6", "jetPhi_1", "jetPhi_2", 
+    "jetPhi_3","jetPhi_4", "jetPhi_5","jetPhi_6", "btag_1", "btag_2", "btag_3", 
+    "btag_4", "btag_5", "btag_6", "jetE_1", "jetE_2", "jetE_3","jetE_4","jetE_5","jetE_6" };
+	Float_t values[39];
+	for(int kk=0;kk<39;kk++)
 		reader->AddVariable(variables[kk],&values[kk]);
 
 
@@ -37,7 +43,7 @@ void application_BDT(){
 	int nbin=100;
     TH1F *histBDT= new TH1F( "MVA_BDT_powheg","MVA_BDT_powheg",nbin, -0.5,0.5 );
     //define root file and tree
-	TChain *tsignal= new  TChain("tthHadronicTagDumper/trees/tth_13TeV_all");
+	TChain *tsignal= new  TChain("tth_13TeV_all");
 	tsignal->Add("/afs/cern.ch/user/r/repan/root_file/ttHToGG_M125_13TeV_powheg.root");
 	//tsignal->Add("ttHiggs0PToGG2.root");
 	//tsignal->Add("ttHiggs0PToGG3.root");
@@ -60,7 +66,7 @@ void application_BDT(){
 	// Get elapsed time
    sw.Stop();
    std::cout << "--- End of event loop: "; sw.Print();
-    TString outputFile("tth_BDT_powheg_app.root");
+    TString outputFile("tth_BDT_powheg_apply.root");
     TFile *target  = new TFile( outputFile,"update" );
     histBDT->Write();
 

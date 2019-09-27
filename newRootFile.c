@@ -5,15 +5,15 @@ void newRootFile(){
 	tc->Add("ttHiggs0MToGG1.root");
 	tc->Add("ttHiggs0MToGG2.root");
   */
-  string fileName[3]={"ttHiggs0PToGG1.root","ttHiggs0PToGG2.root","ttHToGG_M125_13TeV_powheg.root"};
-  for(int kk=0;kk<3;kk++){
+  string fileName[7]={"ttHiggs0PToGG1.root","ttHiggs0PToGG2.root","ttHiggs0PToGG3.root","ttHiggs0MToGG1.root","ttHiggs0MToGG2.root","ttHiggs0MToGG3.root","ttHToGG_M125_13TeV_powheg.root"};
+  for(int kk=0;kk<7;kk++){
     TFile *sigFile = new TFile(fileName[kk].c_str(),"update");
     TTree *tc=(TTree *) sigFile->Get("tthLeptonicTagDumper/trees/tth_13TeV_all");
   	
     float diph_pt,mass,diph_cosphi,diph_rapidity;
     float ele1_pt,ele1_eta,ele1_phi,ele1_energy;
     float muon1_pt,muon1_eta,muon1_phi,muon1_energy;
-    float n_ele,n_muons,n_jets;
+    float n_ele,n_muons,nb_loose;
     tc->SetBranchAddress("dipho_sumpt",&diph_pt);
     tc->SetBranchAddress("mass",&mass);
     tc->SetBranchAddress("dipho_cosphi",&diph_cosphi);
@@ -28,7 +28,7 @@ void newRootFile(){
     tc->SetBranchAddress("muon1_pt",&muon1_pt);
     tc->SetBranchAddress("n_ele",&n_ele);
     tc->SetBranchAddress("n_muons",&n_muons);
-    tc->SetBranchAddress("n_jets",&n_jets);
+    tc->SetBranchAddress("nb_loose",&nb_loose);
     float diPhoPtoM,diPhoCosPhi,diPhoY;
     float lepPt_1,lepEta_1,lepPhi_1,lepE_1,nLep;
     TBranch* PtoM=tc->Branch("diPhoPtoM",&diPhoPtoM,"diPhoPtoM/F");
@@ -39,7 +39,7 @@ void newRootFile(){
     TBranch* lepPhi=tc->Branch("lepPhi_1",&lepPhi_1,"lepPhi_1/F");
     TBranch* lepEta=tc->Branch("lepEta_1",&lepEta_1,"lepEta_1/F");
     TBranch* nlep=tc->Branch("nLep",&nLep,"nLep/F");
-    TBranch* njets=tc->Branch("nJetsBl",&n_jets,"nJetsBl/F");
+    TBranch* njets=tc->Branch("nJetsBl",&nb_loose,"nJetsBl/F");
 
     float jet_pt1,jet_eta1,jet_phi1,jet_bdiscriminant1,jet_energy1;
     tc->SetBranchAddress("jet_pt1",&jet_pt1);
@@ -176,10 +176,7 @@ void newRootFile(){
       		cout<<"the variable nLep has been writen to the root file."<<endl;
       	if(branchName=="diPhoCosPhi")
       		cout<<"the variable diPhoCosPhi has been writen to the root file."<<endl;
-        if(branchName=="jet_pt1")
-          branchName="jetPt_1";
-        if(branchName=="jet_eta1")
-          branchName="jetEta_1";
+     
        }
        cout<<"the number of total events is "<<tc->GetEntries()<<endl;
       sigFile->Close();
