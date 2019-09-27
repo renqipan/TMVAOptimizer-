@@ -13,10 +13,11 @@ void TMVAAnalyzer::trainSample ( TTree * sample, int sampNo){
         sample->SetBranchAddress(varName, &dummyVars[varInd]);
         varInd++;
     }     
-    Float_t weight, pho1_sigmaEOverE, pho2_sigmaEOverE;
+    Float_t weight, leadIDMVA, subleadIDMVA,tthMVA_RunII;
     sample->SetBranchAddress("weight", &weight );
-    //sample->SetBranchAddress("pho1_sigmaEOverE",&pho1_sigmaEOverE);
-    //sample->SetBranchAddress("pho2_sigmaEOverE",&pho2_sigmaEOverE);
+    sample->SetBranchAddress("leadIDMVA",&leadIDMVA);
+    sample->SetBranchAddress("subleadIDMVA",&subleadIDMVA);
+    sample->SetBranchAddress("tthMVA_RunII",&tthMVA_RunII);
     for (UInt_t i=0; i< sample->GetEntries(); i++) {
         varInd = 0;
         sample->GetEntry(i);
@@ -29,9 +30,8 @@ void TMVAAnalyzer::trainSample ( TTree * sample, int sampNo){
             _trainVars[varInd] = dummyVar;
             varInd++;
         }  
-          
+    if(tthMVA_RunII>0.8435  && leadIDMVA > -0.7 && subleadIDMVA>-0.7)  {
         if( sampNo == ksig ){
-            weight = weight;
             if (i%5 == 0 || i%5 == 2 || i%5 == 4) _dataloaderTrain->AddSignalTrainingEvent( _trainVars, weight );
             else if(i%5 == 1 || i%5 == 3) _dataloaderTrain->AddSignalTestEvent    ( _trainVars, weight );
         } 
@@ -39,7 +39,7 @@ void TMVAAnalyzer::trainSample ( TTree * sample, int sampNo){
             if (i%5 == 0 || i%5 == 2 || i%5 == 4) _dataloaderTrain->AddBackgroundTrainingEvent( _trainVars, weight );
             else if(i%5 == 1 || i%5 == 3) _dataloaderTrain->AddBackgroundTestEvent    ( _trainVars, weight );
         }
-        
+    }    
 
     }
 }

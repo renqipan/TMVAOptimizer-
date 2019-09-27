@@ -28,8 +28,8 @@ void TMVAAnalyzer::TMVAClassification(){
     trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG2.root", "tth_13TeV_all",kbkg);
     trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG3.root", "tth_13TeV_all",kbkg);
     TCut mycuts, mycutb;
-    mycuts="tthMVA_RunII > 0.8435  && leadIDMVA > -0.7 && subleadIDMVA >-0.7 && n_ele+n_muons >0";
-    mycutb="tthMVA_RunII > 0.8435  && leadIDMVA > -0.7 && subleadIDMVA >-0.7 && n_ele+n_muons >0";
+    mycuts="";
+    mycutb=""; //cuts define in TMVATrain.C
     _dataloaderTrain->PrepareTrainingAndTestTree( mycuts, mycutb,
                                          "SplitMode=Random:NormMode=NumEvents:!V" );
     if(_methodName.Contains("BDT")){
