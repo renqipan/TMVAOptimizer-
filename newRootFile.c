@@ -176,10 +176,6 @@ void newRootFile(){
       		cout<<"the variable nLep has been writen to the root file."<<endl;
       	if(branchName=="diPhoCosPhi")
       		cout<<"the variable diPhoCosPhi has been writen to the root file."<<endl;
-        if(branchName=="jet_pt1")
-          branchName="jetPt_1";
-        if(branchName=="jet_eta1")
-          branchName="jetEta_1";
        }
        cout<<"the number of total events is "<<tc->GetEntries()<<endl;
       sigFile->Close();
