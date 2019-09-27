@@ -28,9 +28,9 @@ void TMVAAnalyzer::trainSample ( TTree * sample, int sampNo){
 
             _trainVars[varInd] = dummyVar;
             varInd++;
-        }     
+        }  
+     /*     
         if( sampNo == ksig ){
-            /* a specific weight can be given for a particular sample independent of the provided event weight in the tree. Change this weight (or comment it out accordingly) */ 
             weight = weight;
             if (i%5 == 0 || i%5 == 2 || i%5 == 4) _dataloaderTrain->AddSignalTrainingEvent( _trainVars, weight );
             else if(i%5 == 1 || i%5 == 3) _dataloaderTrain->AddSignalTestEvent    ( _trainVars, weight );
@@ -39,6 +39,8 @@ void TMVAAnalyzer::trainSample ( TTree * sample, int sampNo){
             if (i%5 == 0 || i%5 == 2 || i%5 == 4) _dataloaderTrain->AddBackgroundTrainingEvent( _trainVars, weight );
             else if(i%5 == 1 || i%5 == 3) _dataloaderTrain->AddBackgroundTestEvent    ( _trainVars, weight );
         }
+    */    
+
     }
 }
 /* the method which arranges the filenames according the TTHAnalyzer framework, a minor modification is required to make it generic*/
