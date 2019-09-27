@@ -22,7 +22,7 @@ void histogram_plot(){
 	train_B->Draw("same");
 	test_S->Draw("sameHist");
 	test_B->Draw("sameHist");
-	powheg->DrawNormalized("same");
+	powheg->Draw("same");
 
 	TLegend leg(.7,.7,.9,.9);
 	leg.SetFillColor(0);
