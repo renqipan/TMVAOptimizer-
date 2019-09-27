@@ -1,6 +1,6 @@
 void hist_com_plot(){
 	gStyle->SetOptStat(0);
-	TFile* file1=TFile::Open("/afs/cern.ch/user/r/repan/root_file/ozgur.root");
+	TFile* file1=TFile::Open("/afs/cern.ch/user/r/repan/root_file/ozgur_had.root");
 	TFile* file2=TFile::Open("/afs/cern.ch/user/r/repan/CMSSW_9_4_0/src/TMVAOptimizer/tth_BDT_powheg_app.root");
 
 	TH1D* train_S=(TH1D*) file1->Get("SignalValuesTra");
@@ -16,7 +16,8 @@ void hist_com_plot(){
 	powheg->SetLineColor(6);
 	float scale=1.0/powheg->Integral("width");
 	powheg->Scale(scale);
-	test_B->SetAxisRange(-0.2,0.2);	
+
+	//test_B->SetAxisRange(-0.2,0.2);	
 	TCanvas* c= new TCanvas();
 	train_S->SetTitle("BDT output distribution;Response value;Density");
 	test_B->Draw("Hist");
@@ -35,5 +36,5 @@ void hist_com_plot(){
 	//leg.AddEntry(powheg,"apply-powheg");
 	leg.DrawClone("Same");
 
-	gPad->Print("leptonic_ozgur.png");
+	gPad->Print("hadronic_ozgur.png");
 }
