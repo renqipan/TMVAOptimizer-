@@ -22,12 +22,12 @@ TTree* treeMeng=(TTree*)file2->Get("tth_13TeV_all");
 treeMeng->Draw("BDTG>>hmm","weight");
 auto canvas= new TCanvas();// not necessary
 gStyle->SetOptStat(0);
-hm->DrawNormalized("hist");
-hp->DrawNormalized("histsame");
 hp->SetLineColor(3);
 hm->SetLineColor(4);
 hp->GetXaxis()->SetTitle("BDT output");
 hp->GetYaxis()->SetTitle("Rates"); 
+hm->DrawNormalized("hist");
+hp->DrawNormalized("histsame");
 TLegend leg(.7,.7,.9,.9);
 leg.SetFillColor(0);
 leg.AddEntry(hp,"Pan");
