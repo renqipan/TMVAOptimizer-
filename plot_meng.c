@@ -39,9 +39,10 @@ TH1F* train_S=(TH1F*) file1->Get("Method_BDT/BDT/MVA_BDT_Train_S");
 TH1F* test_S=(TH1F*) file1->Get("Method_BDT/BDT/MVA_BDT_S");
 train_S->SetLineColor(1);
 test_S->SetLineColor(2);
-hm->DrawNormalized("hist");
-train_S->DrawNormalized("histSame");
+train_S->DrawNormalized("hist");
 test_S->DrawNormalized("histSame");
+hm->DrawNormalized("histsame");
+
 TLegend leg1(.7,.7,.9,.9);
 leg1.SetFillColor(0);
 leg1.AddEntry(test_S,"Test");
