@@ -9,7 +9,7 @@ auto oz_sum=new TH1F(*oz_tr);
 oz_sum->Add(oz_ts,1.0);
 int scale_oz=oz_sum->Integral("width");
 oz_sum->Scale(scale_oz);
-oz_sum_>SetLineColor(2);
+oz_sum->SetLineColor(2);
 
 TH1F* train_S=(TH1F*) file1->Get("Method_BDT/BDT/MVA_BDT_Train_S");
 TH1F* test_S=(TH1F*) file1->Get("Method_BDT/BDT/MVA_BDT_S");
