@@ -78,6 +78,7 @@ leg1.AddEntry(hm,"Meng-2018");
 leg1.DrawClone("Same");
 gPad->Print("pan_lep.png");
 ///////////////////////////////////////////////////////
+//compare test-train 
 TH1F* test_s=new TH1F("test_s","BDT of Pan",100,-0.2,0.2);
 TH1F* test_b=new TH1F("test_b","BDT of Pan",100,-0.2,0.2);
 TH1F* train_s=new TH1F("train_s","BDT of Pan",100,-0.2,0.2);
