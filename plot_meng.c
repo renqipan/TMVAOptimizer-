@@ -7,7 +7,7 @@ TH1F* oz_ts=(TH1F*)file3->Get("SignalValuesTest");
 TH1F* oz_tr=(TH1F*)file3->Get("SignalValuesTra");
 auto oz_sum=new TH1F(*oz_tr);
 oz_sum->Add(oz_ts,1.0);
-int scale_oz=oz_sum->Integral("width");
+int scale_oz=1.0/oz_sum->Integral("width");
 oz_sum->Scale(scale_oz);
 oz_sum->SetLineColor(2);
 
