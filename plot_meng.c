@@ -20,12 +20,12 @@ for(int j=0;j<train->GetEntries();j++){
 
 TTree* treeMeng=(TTree*)file2->Get("tth_13TeV_all");
 treeMeng->Draw("BDTG>>hm","weight");
- 
+auto canvas= new TCanvas();// not necessary
 gStyle->SetOptStat(0);
-hm->DrawNormalized("hist");
-hm->SetLineColor(4);
-hp->DrawNormalized("histsame");
+hp->DrawNormalized("hist");
+hm->DrawNormalized("histsame");
 hp->SetLineColor(3);
+hm->SetLineColor(4);
 hp->GetXaxis()->SetTitle("BDT output");
 hp->GetYaxis()->SetTitle("Rates"); 
 TLegend leg(.7,.7,.9,.9);
