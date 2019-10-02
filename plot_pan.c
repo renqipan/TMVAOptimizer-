@@ -77,5 +77,42 @@ leg1.AddEntry(hm,"Meng-2018");
 leg1.AddEntry(hc,"Pan-2018");
 leg1.DrawClone("Same");
 gPad->Print("pan_lep.png");
+///////////////////////////////////////////////////////
+TH1F* test_s=new TH1F("test_s","BDT of Pan",100,-0.2,0.2);
+TH1F* test_b=new TH1F("test_b","BDT of Pan",100,-0.2,0.2);
+TH1F* train_s=new TH1F("train_s","BDT of Pan",100,-0.2,0.2);
+TH1F* train_b=new TH1F("train_b","BDT of Pan",100,-0.2,0.2);
+test->Draw("BDT>>test_s","weight*(classID==0)");
+test->Draw("BDT>>test_b","weight*(classID==1)");
+train->Draw("BDT>>train_s","weight*(classID==0)");
+train->Draw("BDT>>train_b","weight*(classID==1)");
+scale1=1.0/test_s->Integral("width");
+test_s->Scale(scale1);
+scale2=1.0/test_b->Integral("width");
+test_b->Scale(scale2);
+scale3=1.0/train_s->Integral("width");
+train_s->Scale(scale3);
+scale4=1.0/train_b->Integral("width");
+train_b->Scale(scale4);
+
+test_s->SetLineColor(1);
+test_s->GetXaxis()->SetTitle("BDT output");
+test_s->GetYaxis()->SetTitle("Density"); 
+test_b->SetLineColor(2);
+train_b->SetLineColor(3);
+train_s->SetLineColor(4);
+test_s->Draw("hist");
+test_b->Draw("histSame");
+train_s->Draw("histSame");
+train_b->Draw("histSame");
+
+TLegend leg1(.7,.7,.9,.9);
+leg1.SetFillColor(0);
+leg1.AddEntry(test_s,"Test-Sig");
+leg1.AddEntry(test_b,"Test-Bkg" );
+leg1.AddEntry(train_s,"Train-Sig");
+leg1.AddEntry(train_b,"Train-Bkg");
+leg1.DrawClone("Same");
+gPad->Print("test_train.png");
 
 }
