@@ -4,7 +4,7 @@
 using namespace TMVA;
 /* This method includes the list of trees and initialization of the TMVA instance */
 void TMVAAnalyzer::TMVAClassification(){
-    TString outfileName( _outputPath+"/TMVA.root" );
+    TString outfileName( _outputPath+"/TMVA2018.root" );
     (TMVA::gConfig().GetIONames()).fWeightFileDir = _outputPath;
     outputFile = TFile::Open( outfileName, "RECREATE" );
     _factory = new TMVA::Factory( (TString)"TMVAClassification", outputFile,
