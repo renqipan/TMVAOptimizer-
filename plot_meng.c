@@ -17,17 +17,17 @@ for(int i=0;i<test->GetEntries();i++){
 for(int j=0;j<train->GetEntries();j++){
 	train->GetEntry(j);hp->Fill(train_BDT,train_weight );
 }
-  hp->DrawNormalized("hist");
-  hp->SetLineColor(3);
-  gStyle->SetOptStat(0);
-  hp->GetXaxis()->SetTitle("BDT output");
-  hp->GetYaxis()->SetTitle("Rates"); 
 
 TTree* treeMeng=(TTree*)file2->Get("tth_13TeV_all");
 treeMeng->Draw("BDTG>>hm","weight");
-hm->DrawNormalized("histsame");
+ 
+gStyle->SetOptStat(0);
+hm->DrawNormalized("hist");
 hm->SetLineColor(4);
-
+hp->DrawNormalized("histsame");
+hp->SetLineColor(3);
+hp->GetXaxis()->SetTitle("BDT output");
+hp->GetYaxis()->SetTitle("Rates"); 
 TLegend leg(.7,.7,.9,.9);
 leg.SetFillColor(0);
 leg.AddEntry(hp,"Pan");
