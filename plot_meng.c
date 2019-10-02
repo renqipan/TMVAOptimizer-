@@ -24,7 +24,7 @@ for(int j=0;j<train->GetEntries();j++){
   hp->GetYaxis()->SetTitle("Rates"); 
 
 TTree* treeMeng=(TTree*)file2->Get("tth_13TeV_all");
-treeMeng->Draw("BDTG"+">>hm","weight");
+treeMeng->Draw("BDTG>>hm","weight");
 hm->DrawNormalized("histsame");
 hm->SetLineColor(4);
 
