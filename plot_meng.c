@@ -8,8 +8,8 @@ test->SetBranchAddress("BDT",&test_BDT);
 train->SetBranchAddress("BDT",&train_BDT);
 test->SetBranchAddress("weight",&test_weight);
 train->SetBranchAddress("weight",&train_weight);
-TH1F* hp=new TH1F("hp","BDT of Pan",100,-0.2,0.2);
-TH1F* hm=new TH1F("hm","BDT of Meng",100,-0.2,0.2);
+TH1F* hp=new TH1F("hpp","BDT of Pan",100,-0.2,0.2);
+TH1F* hm=new TH1F("hmm","BDT of Meng",100,-0.2,0.2);
 
 for(int i=0;i<test->GetEntries();i++){
 	test->GetEntry(i);hp->Fill(test_BDT,test_weight);
@@ -19,11 +19,11 @@ for(int j=0;j<train->GetEntries();j++){
 }
 
 TTree* treeMeng=(TTree*)file2->Get("tth_13TeV_all");
-treeMeng->Draw("BDTG>>hm","weight");
+treeMeng->Draw("BDTG>>hmm","weight");
 auto canvas= new TCanvas();// not necessary
 gStyle->SetOptStat(0);
-hp->DrawNormalized("hist");
-hm->DrawNormalized("histsame");
+hm->DrawNormalized("hist");
+hp->DrawNormalized("histsame");
 hp->SetLineColor(3);
 hm->SetLineColor(4);
 hp->GetXaxis()->SetTitle("BDT output");
