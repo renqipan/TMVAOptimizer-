@@ -33,7 +33,20 @@ leg.SetFillColor(0);
 leg.AddEntry(hp,"Pan");
 leg.AddEntry(hm,"Meng");
 leg.DrawClone("Same");
-
 gPad->Print("pan_meng.png");
 
+TH1F* train_S=(TH1F*) file1->Get("Method_BDT/BDT/MVA_BDT_Train_S");
+TH1F* test_S=(TH1F*) file1->Get("Method_BDT/BDT/MVA_BDT_S");
+train_S->SetLineColor(1);
+test_S->SetLineColor(2);
+hm->DrawNormalized("hist");
+train_S->DrawNormalized("histSame");
+test_S->DrawNormalized("histSame");
+TLegend leg1(.7,.7,.9,.9);
+leg1.SetFillColor(0);
+leg1.AddEntry(test_S,"Test");
+leg1.AddEntry(train_S,"Train");
+leg1.AddEntry(hm,"Meng");
+leg1.DrawClone("Same");
+gPad->Print("pan_meng1.png");
 }
