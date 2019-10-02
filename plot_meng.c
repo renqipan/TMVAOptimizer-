@@ -22,7 +22,7 @@ pan3->Scale(scale3);
 pan3->SetLineColor(3);
 
 int nbins=train_S->GetNbinsX();
-TH1F* hm=new TH1F("hm","BDT of Meng",nbins,-0.2,0.2);
+TH1F* hm=new TH1F("hm","BDT of Meng",nbins,-0.2,0.15);
 TTree* treeMeng=(TTree*)file2->Get("tth_13TeV_all");
 treeMeng->Draw("BDTG>>hm","weight");
 gStyle->SetOptStat(0);
