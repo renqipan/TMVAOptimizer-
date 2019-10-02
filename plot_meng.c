@@ -24,10 +24,10 @@ auto canvas= new TCanvas();// not necessary
 gStyle->SetOptStat(0);
 hp->SetLineColor(3);
 hm->SetLineColor(4);
-hp->GetXaxis()->SetTitle("BDT output");
-hp->GetYaxis()->SetTitle("Rates"); 
+hm->GetXaxis()->SetTitle("BDT output");
+hm->GetYaxis()->SetTitle("Rates"); 
 hm->DrawNormalized("hist");
-hp->DrawNormalized("histsame");
+hp->DrawNormalized("histSame");
 TLegend leg(.7,.7,.9,.9);
 leg.SetFillColor(0);
 leg.AddEntry(hp,"Pan");
