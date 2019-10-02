@@ -22,7 +22,6 @@ pan3->Scale(scale3);
 pan3->SetLineColor(3);
 
 int nbins=train_S->GetNbinsX();
-cout<<"nbins="<<nbins<<endl;
 TH1F* hm=new TH1F("hm","BDT of Meng",nbins,-0.2,0.2);
 TTree* treeMeng=(TTree*)file2->Get("tth_13TeV_all");
 treeMeng->Draw("BDTG>>hm","weight");
@@ -37,7 +36,9 @@ pan3->Draw("histSame");
 oz_sum->Draw("histSame");
 //train_S->Draw("histsame");
 //test_S->Draw("histSame");
-
+cout<<"pan:nbins="<<nbins<<endl;
+cout<<"ozgur:nbins="<<oz_sum->GetNbinsX()<<endl;
+cout<<"meng:nbins="<<hm->GetNbinsX()<<endl;
 
 TLegend leg1(.7,.7,.9,.9);
 leg1.SetFillColor(0);

@@ -22,11 +22,11 @@ void TMVAAnalyzer::TMVAClassification(){
     std::cout << "Performing training..." << std::endl;
     /* TMVAOptimizer.h header includes the sampleNo typedef list */
     trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG1.root", "tth_13TeV_all",ksig);
-    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG2.root", "tth_13TeV_all",ksig);
-    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG3.root", "tth_13TeV_all",ksig);
+    //trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG2.root", "tth_13TeV_all",ksig);
+    //trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG3.root", "tth_13TeV_all",ksig);
     trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG1.root", "tth_13TeV_all",kbkg);
-    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG2.root", "tth_13TeV_all",kbkg);
-    trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG3.root", "tth_13TeV_all",kbkg);
+    //trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG2.root", "tth_13TeV_all",kbkg);
+   // trainInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG3.root", "tth_13TeV_all",kbkg);
     TCut mycuts, mycutb;
     mycuts="";
     mycutb=""; //cuts define in TMVATrain.C
@@ -64,11 +64,11 @@ void TMVAAnalyzer::TMVAClassificationApp(){
     _reader->BookMVA( _methodName, weightfile ); 
 
     evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG1.root", "tth_13TeV_all",ksig);
-    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG2.root", "tth_13TeV_all",ksig);
-    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG3.root", "tth_13TeV_all",ksig);
+    //evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG2.root", "tth_13TeV_all",ksig);
+    //evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0PToGG3.root", "tth_13TeV_all",ksig);
     evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG1.root", "tth_13TeV_all",kbkg);
-    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG2.root", "tth_13TeV_all",kbkg);
-    evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG3.root", "tth_13TeV_all",kbkg);
+    //evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG2.root", "tth_13TeV_all",kbkg);
+   // evalInterface("/afs/cern.ch/user/r/repan/root_file/ttHiggs0MToGG3.root", "tth_13TeV_all",kbkg);
 
 
     TFile * evalOutput = new TFile(_outputPath+(TString)"_evaluation.root","RECREATE");
