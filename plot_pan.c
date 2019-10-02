@@ -30,27 +30,33 @@ TH1F* hm=new TH1F("hm","BDT of Meng",100,-0.2,0.2);
 TH1F* hc=new TH1F("hc","BDT of Pan-2018",100,-0.2,0.2);
 
 for(int i=0;i<test->GetEntries();i++){
-	if(class_test==0){
-	test->GetEntry(i);hp->Fill(test_BDT,test_weight);}
+	test->GetEntry(i);
+	if(class_test==0)
+		hp->Fill(test_BDT,test_weight);
 }
 for(int j=0;j<train->GetEntries();j++){
-	if(class_train==0){
-	train->GetEntry(j);hp->Fill(train_BDT,train_weight );}
+	train->GetEntry(j);
+    if(class_train==0)
+		hp->Fill(train_BDT,train_weight );
 }
 
 for(int i=0;i<test1->GetEntries();i++){
-	if(class_test1==0){
-	test1->GetEntry(i);hc->Fill(test_BDT1,test_weight1);}
+	test1->GetEntry(i);
+    if(class_test1==0)
+		hc->Fill(test_BDT1,test_weight1);
 }
 for(int j=0;j<train1->GetEntries();j++){
-	if(class_train1==0){
-	train1->GetEntry(j);hc->Fill(train_BDT1,train_weight1 );}
+	train1->GetEntry(j);
+	if(class_train1==0)
+		hc->Fill(train_BDT1,train_weight1 );
 }
 
 float scale_hp=1.0/hp->Integral("width");
 hp->Scale(scale_hp);
+hp->SetLineColor(2);
 float scale_hc=1.0/hc->Integral("width");
 hc->Scale(scale_hc);
+hc->SetLineColor(3);
 
 TTree* treeMeng=(TTree*)file2->Get("tth_13TeV_all");
 treeMeng->Draw("BDTG>>hm","weight");
