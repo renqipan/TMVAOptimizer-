@@ -25,8 +25,8 @@ train1->SetBranchAddress("weight",&train_weight1);
 int class_test1,class_train1;
 test1->SetBranchAddress("classID",&class_test1);
 train1->SetBranchAddress("classID",&class_train1);
-TH1F* hp=new TH1F("hp","Distribution of BDT output of Sigal",100,-0.2,0.2);
-TH1F* hm=new TH1F("hm","Distribution of BDT output of Sigal",100,-0.2,0.2);
+TH1F* hp=new TH1F("hp","Distribution of BDT output of Signal",100,-0.2,0.2);
+TH1F* hm=new TH1F("hm","Distribution of BDT output of Signal",100,-0.2,0.2);
 TH1F* hc=new TH1F("hc","BDT of Pan-2018",100,-0.2,0.2);
 
 for(int i=0;i<test->GetEntries();i++){
