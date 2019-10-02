@@ -27,3 +27,11 @@ TTree* treeMeng=(TTree*)file2->Get("tth_13TeV_all");
 treeMeng->Draw("BDTG"+">>hm","weight");
 hm->DrawNormalized("histsame");
 hm->SetLineColor(4);
+
+TLegend leg(.7,.7,.9,.9);
+leg.SetFillColor(0);
+leg.AddEntry(hp,"Pan");
+leg.AddEntry(hm,"Meng");
+leg.DrawClone("Same");
+
+gPad->Print("pan_meng.png");
