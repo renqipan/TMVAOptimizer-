@@ -11,7 +11,7 @@ test->SetBranchAddress("BDT",&test_BDT);
 train->SetBranchAddress("BDT",&train_BDT);
 test->SetBranchAddress("weight",&test_weight);
 train->SetBranchAddress("weight",&train_weight);
-TString class_test,class_train;
+Char_t class_test,class_train;
 test->SetBranchAddress("className",&class_test);
 train->SetBranchAddress("className",&class_train);
 
@@ -22,7 +22,7 @@ test1->SetBranchAddress("BDT",&test_BDT1);
 train1->SetBranchAddress("BDT",&train_BDT1);
 test1->SetBranchAddress("weight",&test_weight1);
 train1->SetBranchAddress("weight",&train_weight1);
-TString class_test1,class_train1;
+Char_t class_test1,class_train1;
 test1->SetBranchAddress("className",&class_test1);
 train1->SetBranchAddress("className",&class_train1);
 TH1F* hp=new TH1F("hp","BDT of Pan",100,-0.2,0.2);
