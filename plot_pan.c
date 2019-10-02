@@ -31,7 +31,7 @@ TH1F* hc=new TH1F("hc","BDT of Pan-2018",100,-0.2,0.2);
 
 for(int i=0;i<test->GetEntries();i++){
 	test->GetEntry(i);
-	if(class_test==0)
+	if(class_test==0)//"0"denotes signal;"1"denotes background
 		hp->Fill(test_BDT,test_weight);
 }
 for(int j=0;j<train->GetEntries();j++){
@@ -63,7 +63,7 @@ treeMeng->Draw("BDTG>>hm","weight");
 gStyle->SetOptStat(0);
 hm->SetLineColor(4);
 hm->GetXaxis()->SetTitle("BDT output");
-hm->GetYaxis()->SetTitle("Rates"); 
+hm->GetYaxis()->SetTitle("Density"); 
 float scale=1.0/hm->Integral("width");
 hm->Scale(scale);
 hm->Draw("hist");
@@ -86,13 +86,13 @@ test->Draw("BDT>>test_s","weight*(classID==0)");
 test->Draw("BDT>>test_b","weight*(classID==1)");
 train->Draw("BDT>>train_s","weight*(classID==0)");
 train->Draw("BDT>>train_b","weight*(classID==1)");
-scale1=1.0/test_s->Integral("width");
+float scale1=1.0/test_s->Integral("width");
 test_s->Scale(scale1);
-scale2=1.0/test_b->Integral("width");
+float scale2=1.0/test_b->Integral("width");
 test_b->Scale(scale2);
-scale3=1.0/train_s->Integral("width");
+float scale3=1.0/train_s->Integral("width");
 train_s->Scale(scale3);
-scale4=1.0/train_b->Integral("width");
+float scale4=1.0/train_b->Integral("width");
 train_b->Scale(scale4);
 
 test_s->SetLineColor(1);
@@ -106,13 +106,13 @@ test_b->Draw("histSame");
 train_s->Draw("histSame");
 train_b->Draw("histSame");
 
-TLegend leg1(.7,.7,.9,.9);
-leg1.SetFillColor(0);
-leg1.AddEntry(test_s,"Test-Sig");
-leg1.AddEntry(test_b,"Test-Bkg" );
-leg1.AddEntry(train_s,"Train-Sig");
-leg1.AddEntry(train_b,"Train-Bkg");
-leg1.DrawClone("Same");
+TLegend leg2(.7,.7,.9,.9);
+leg2.SetFillColor(0);
+leg2.AddEntry(test_s,"Test-Sig");
+leg2.AddEntry(test_b,"Test-Bkg" );
+leg2.AddEntry(train_s,"Train-Sig");
+leg2.AddEntry(train_b,"Train-Bkg");
+leg2.DrawClone("Same");
 gPad->Print("test_train.png");
 
 }
