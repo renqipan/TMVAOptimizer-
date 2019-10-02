@@ -25,8 +25,8 @@ train1->SetBranchAddress("weight",&train_weight1);
 int class_test1,class_train1;
 test1->SetBranchAddress("classID",&class_test1);
 train1->SetBranchAddress("classID",&class_train1);
-TH1F* hp=new TH1F("hp","BDT of Pan",100,-0.2,0.2);
-TH1F* hm=new TH1F("hm","BDT of Meng",100,-0.2,0.2);
+TH1F* hp=new TH1F("hp","Distribution of BDT output of Sigal",100,-0.2,0.2);
+TH1F* hm=new TH1F("hm","Distribution of BDT output of Sigal",100,-0.2,0.2);
 TH1F* hc=new TH1F("hc","BDT of Pan-2018",100,-0.2,0.2);
 
 for(int i=0;i<test->GetEntries();i++){
@@ -68,13 +68,13 @@ float scale=1.0/hm->Integral("width");
 hm->Scale(scale);
 hm->Draw("hist");
 hp->Draw("histSame");
-hc->Draw("histSame");
+//hc->Draw("histSame");
 
 TLegend leg1(.7,.7,.9,.9);
 leg1.SetFillColor(0);
 leg1.AddEntry(hp,"Pan-3yr.");
 leg1.AddEntry(hm,"Meng-2018");
-leg1.AddEntry(hc,"Pan-2018");
+//leg1.AddEntry(hc,"Pan-2018");
 leg1.DrawClone("Same");
 gPad->Print("pan_lep.png");
 ///////////////////////////////////////////////////////
@@ -108,10 +108,10 @@ train_b->Draw("histSame");
 
 TLegend leg2(.7,.7,.9,.9);
 leg2.SetFillColor(0);
-leg2.AddEntry(test_s,"Test-Sig");
-leg2.AddEntry(test_b,"Test-Bkg" );
-leg2.AddEntry(train_s,"Train-Sig");
-leg2.AddEntry(train_b,"Train-Bkg");
+leg2.AddEntry(test_s,"Test-Even");
+leg2.AddEntry(test_b,"Test-Odd" );
+leg2.AddEntry(train_s,"Train-Even");
+leg2.AddEntry(train_b,"Train-Odd");
 leg2.DrawClone("Same");
 gPad->Print("test_train.png");
 
