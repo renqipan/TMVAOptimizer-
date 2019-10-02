@@ -1,6 +1,6 @@
+void plot_meng(){
 TFile*  file1=TFile::Open("/afs/cern.ch/user/r/repan/CMSSW_9_4_0/src/TMVAOptimizer/bin/output/TMVA.root");
 TFile* file2=TFile::Open("/afs/cern.ch/user/r/repan/root_file/ttHgg_0PM_lep_new_2018_bdt.root");
-TTree *test,*train,treeMeng;
 TTree* test=(TTree*)file1->Get("TestTree");
 TTree* train=(TTree*)file1->Get("TrainTree");
 float test_BDT,train_BDT,test_weight,train_weight;
@@ -35,3 +35,5 @@ leg.AddEntry(hm,"Meng");
 leg.DrawClone("Same");
 
 gPad->Print("pan_meng.png");
+
+}
