@@ -11,9 +11,9 @@ test->SetBranchAddress("BDT",&test_BDT);
 train->SetBranchAddress("BDT",&train_BDT);
 test->SetBranchAddress("weight",&test_weight);
 train->SetBranchAddress("weight",&train_weight);
-Char_t class_test,class_train;
-test->SetBranchAddress("className",&class_test);
-train->SetBranchAddress("className",&class_train);
+int class_test,class_train;
+test->SetBranchAddress("classID",&class_test);
+train->SetBranchAddress("classID",&class_train);
 
 TTree* test1=(TTree*)file4->Get("TestTree");
 TTree* train1=(TTree*)file4->Get("TrainTree");
@@ -22,28 +22,28 @@ test1->SetBranchAddress("BDT",&test_BDT1);
 train1->SetBranchAddress("BDT",&train_BDT1);
 test1->SetBranchAddress("weight",&test_weight1);
 train1->SetBranchAddress("weight",&train_weight1);
-Char_t class_test1,class_train1;
-test1->SetBranchAddress("className",&class_test1);
-train1->SetBranchAddress("className",&class_train1);
+int class_test1,class_train1;
+test1->SetBranchAddress("classID",&class_test1);
+train1->SetBranchAddress("classID",&class_train1);
 TH1F* hp=new TH1F("hp","BDT of Pan",100,-0.2,0.2);
 TH1F* hm=new TH1F("hm","BDT of Meng",100,-0.2,0.2);
 TH1F* hc=new TH1F("hc","BDT of Pan-2018",100,-0.2,0.2);
 
 for(int i=0;i<test->GetEntries();i++){
-	if(class_test=="Signal"){
+	if(class_test==0){
 	test->GetEntry(i);hp->Fill(test_BDT,test_weight);}
 }
 for(int j=0;j<train->GetEntries();j++){
-	if(class_train=="Signal"){
+	if(class_train==0){
 	train->GetEntry(j);hp->Fill(train_BDT,train_weight );}
 }
 
 for(int i=0;i<test1->GetEntries();i++){
-	if(class_test1=="Signal"){
+	if(class_test1==0){
 	test1->GetEntry(i);hc->Fill(test_BDT1,test_weight1);}
 }
 for(int j=0;j<train1->GetEntries();j++){
-	if(class_train1=="Signal"){
+	if(class_train1==0){
 	train1->GetEntry(j);hc->Fill(train_BDT1,train_weight1 );}
 }
 
