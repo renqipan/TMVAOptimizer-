@@ -8,7 +8,7 @@ train_S->SetLineColor(1);
 test_S->SetLineColor(2);
 auto pan3=new TH1F(*test_S);
 pan3->Add(train_S,1.);
-scale3=1.0/pan3->Integral("width");
+float scale3=1.0/pan3->Integral("width");
 pan3->Scale(scale3);
 
 int nbins=train_S->GetNbinsX();
